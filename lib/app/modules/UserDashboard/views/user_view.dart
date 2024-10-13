@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hwapp/app/modules/Scoreboard/views/scoreboard_view.dart';
+import 'package:hwapp/app/modules/UserDashboard/views/webview_user.dart';
 import 'package:hwapp/app/modules/absen/views/absen_view.dart';
 import 'package:hwapp/app/modules/calender/views/calender_view.dart';
 import 'package:hwapp/app/modules/profile/views/profile_view.dart';
 import 'package:hwapp/app/modules/schedule/views/schedule_view.dart';
 import 'package:hwapp/app/modules/user_modul/views/modul_view.dart';
+
 import '../controllers/user_controller.dart';
 
 class HomepageUView extends GetView<HomepageUController> {
@@ -145,6 +147,13 @@ class HomepageUView extends GetView<HomepageUController> {
                       Icons.leaderboard,
                       () => Get.to(() => ScoreboardPage()),
                     ),
+                    // New Sejarah Menu Item
+                    buildMenuItem(
+                      context,
+                      'About HW',
+                      Icons.info,
+                      () => Get.to(() => SejarahView()),
+                    ),
                   ],
                 ),
               ],
@@ -163,16 +172,14 @@ class HomepageUView extends GetView<HomepageUController> {
         onTap: (index) {
           switch (index) {
             case 0:
-              // Navigate to home (you can implement this later)
+              Get.to(() => HomepageUView());
               break;
             case 1:
-              // Navigate to another page (you can implement this later)
               break;
             case 2:
-              Get.to(() => CalenderView()); // Navigate to CalendarView
+              Get.to(() => CalenderView());
               break;
             case 3:
-              // Navigate to user profile or settings (you can implement this later)
               break;
           }
         },

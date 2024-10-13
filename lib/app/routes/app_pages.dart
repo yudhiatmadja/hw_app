@@ -1,10 +1,14 @@
 import 'package:get/get.dart';
 import 'package:hwapp/app/modules/Absen/bindings/absen_binding.dart';
+import 'package:hwapp/app/modules/Scoreboard/bindings/scoreboard_bindings.dart';
+import 'package:hwapp/app/modules/Scoreboard/views/scoreboard_view.dart';
 import 'package:hwapp/app/modules/absen/views/absen_view.dart';
 import 'package:hwapp/app/modules/admin_absen/bindings/admin_absen_binding.dart';
 import 'package:hwapp/app/modules/admin_absen/views/admin_absen_view.dart';
 import 'package:hwapp/app/modules/calender/bindings/calender_binding.dart';
 import 'package:hwapp/app/modules/calender/views/calender_view.dart';
+import 'package:hwapp/app/modules/kegiatan_admin/bindings/addkegiatan_binding.dart';
+import 'package:hwapp/app/modules/kegiatan_admin/views/addkegiatan_view.dart';
 import 'package:hwapp/app/modules/schedule/bindings/schedule_binding.dart';
 import 'package:hwapp/app/modules/schedule/views/schedule_view.dart';
 import 'package:hwapp/app/modules/struktur/bindings/struktur_binding.dart';
@@ -65,7 +69,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PROFILE,
-      page: () => const ProfileView(),
+      page: () => ProfileView(),
       binding: ProfileBinding(),
     ),
     GetPage(
@@ -100,13 +104,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SCHEDULE,
-      page: () => const ScheduleView(),
+      page: () => ScheduleView(),
       binding: ScheduleBinding(),
     ),
     GetPage(
       name: _Paths.SCOREBOARD,
-      page: () => const ScheduleView(),
-      binding: ScheduleBinding(),
+      page: () => const ScoreboardPage(),
+      binding: ScoreboardBindings(),
     ),
     GetPage(
       name: _Paths.ABSEN,
@@ -132,6 +136,11 @@ class AppPages {
       name: _Paths.STRUKTUR,
       page: () => StrukturScreen(),
       binding: StrukturBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADDKEGIATAN,
+      page: () => AddEventPage(),
+      binding: AddkegiatanBinding(),
     ),
   ];
 }

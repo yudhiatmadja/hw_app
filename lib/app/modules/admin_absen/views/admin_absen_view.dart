@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
-import 'package:printing/printing.dart';
 
 class AbsenAdminPage extends StatefulWidget {
   @override
@@ -31,11 +28,6 @@ class _AbsenAdminPageState extends State<AbsenAdminPage> {
         itemBuilder: (context, index) {
           return attendanceRow(attendances[index], index);
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: generatePdf,
-        child: Icon(Icons.download),
-        backgroundColor: Colors.green,
       ),
     );
   }
@@ -131,39 +123,6 @@ class _AbsenAdminPageState extends State<AbsenAdminPage> {
     setState(() {
       attendances.removeAt(index);
     });
-  }
-
-  void generatePdf() async {
-    print("Generating PDF...");
-    final pdf = pw.Document();
-
-    pdf.addPage(
-      pw.Page(
-        build: (pw.Context context) {
-          return pw.Column(
-            children: [
-              pw.Text('Attendance Report', style: pw.TextStyle(fontSize: 24)),
-              pw.SizedBox(height: 20),
-              // ignore: deprecated_member_use
-              pw.Table.fromTextArray(
-                data: <List<String>>[
-                  <String>['Name', 'Status'],
-                  ...attendances.map((attendance) => [
-                        attendance.name,
-                        attendance.isPresent ? 'Hadir' : 'Absen'
-                      ])
-                ],
-                cellStyle: pw.TextStyle(fontSize: 14),
-                headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-              ),
-            ],
-          );
-        },
-      ),
-    );
-
-    await Printing.layoutPdf(
-        onLayout: (PdfPageFormat format) async => pdf.save());
   }
 }
 

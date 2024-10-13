@@ -5,76 +5,58 @@ import '../controllers/modul_controller.dart';
 import 'baca_modul.dart';
 
 class ModulScreen extends StatelessWidget {
-  final ModulController _modulController =
-      Get.put(ModulController()); // Instantiate controller
+  final ModulController _modulController = Get.put(ModulController());
 
   Widget moduleCard(ModulModel module) {
     return GestureDetector(
       onTap: () {
-        // Set the module details in the controller
         _modulController.setModule(module);
-        // Navigate to the BacaModulScreen
         Get.to(BacaModulScreen());
       },
       child: Container(
-        width: 383,
+        margin: EdgeInsets.symmetric(
+            vertical: 10, horizontal: 16), // Add margin for spacing
+        width: double.infinity, // Make it responsive
         height: 172,
+        decoration: BoxDecoration(
+          color: Color(0xFFF1F1F1),
+          borderRadius: BorderRadius.circular(10), // Rounded corners
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0, 3), // Changes position of shadow
+            ),
+          ],
+        ),
         child: Stack(
           children: [
             Positioned(
-              left: 0,
-              top: 0,
-              child: Container(
-                width: 383,
-                height: 172,
-                decoration: BoxDecoration(color: Color(0xFFF1F1F1)),
-              ),
-            ),
-            Positioned(
-              left: 99,
-              top: 17,
+              left: 15,
+              top: 15,
               child: SizedBox(
-                width: 172,
-                height: 19,
+                width: 250,
                 child: Text(
                   module.title,
                   style: TextStyle(
                     color: Color(0xFF292929),
-                    fontSize: 20.17,
+                    fontSize: 20,
                     fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
             ),
             Positioned(
-              left: 100,
-              top: 42,
+              left: 15,
+              top: 50,
               child: SizedBox(
-                width: 83,
-                height: 13,
                 child: Text(
                   module.date,
                   style: TextStyle(
                     color: Color(0xFF696969),
-                    fontSize: 13.45,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              left: 100,
-              top: 67,
-              child: SizedBox(
-                width: 258,
-                height: 39,
-                child: Text(
-                  module.description,
-                  style: TextStyle(
-                    color: Color(0xFF292929),
-                    fontSize: 13.45,
+                    fontSize: 14,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w400,
                   ),
@@ -82,30 +64,44 @@ class ModulScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 277,
-              top: 129,
+              left: 15,
+              top: 70,
+              child: SizedBox(
+                width: 300,
+                child: Text(
+                  module.description,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Color(0xFF292929),
+                    fontSize: 14,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 15,
+              bottom: 10,
               child: GestureDetector(
                 onTap: () {
-                  // Set the module details in the controller
                   _modulController.setModule(module);
-                  // Navigate to the BacaModulScreen
                   Get.to(BacaModulScreen());
                 },
                 child: Container(
-                  width: 87,
-                  height: 31,
-                  decoration: ShapeDecoration(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: BoxDecoration(
                     color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4.48),
-                    ),
+                    borderRadius: BorderRadius.circular(4.48),
+                    border: Border.all(color: Colors.grey[300]!),
                   ),
                   child: Center(
                     child: Text(
                       'Baca',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 13.45,
+                        fontSize: 14,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
                       ),
@@ -139,7 +135,24 @@ class ModulScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Modul List'),
+        title: Text(
+          'Modul List',
+          style: TextStyle(
+            fontSize: 22,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
       ),
       body: ListView(
         children: modules.map(moduleCard).toList(),

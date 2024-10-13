@@ -21,6 +21,7 @@ abstract class Routes {
   static const BACAMODUL = _Paths.BACAMODUL;
   static const ABSENADMIN = _Paths.ABSENADMIN;
   static const STRUKTUR = _Paths.STRUKTUR;
+  static const ADDKEGIATAN = _Paths.ADDKEGIATAN;
 }
 
 abstract class _Paths {
@@ -43,4 +44,5 @@ abstract class _Paths {
   static const BACAMODUL = '/bacamodul';
   static const ABSENADMIN = '/absenadmin';
   static const STRUKTUR = '/struktur';
+  static const ADDKEGIATAN = '/addkegiatan';
 }

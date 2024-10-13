@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hwapp/app/modules/Quiz/views/quiz_view.dart';
 import 'package:hwapp/app/modules/admin_absen/views/admin_absen_view.dart';
+import 'package:hwapp/app/modules/kegiatan_admin/views/addkegiatan_view.dart';
 import 'package:hwapp/app/modules/modulpage/views/add_module_view.dart';
 import 'package:hwapp/app/modules/profile/views/profile_view.dart';
-import 'package:hwapp/app/modules/schedule/views/schedule_view.dart';
 import 'package:hwapp/app/modules/statistik/views/statistik_view.dart';
 import 'package:hwapp/app/modules/struktur/views/struktur_view.dart';
 
@@ -32,7 +32,7 @@ class HomepageAView extends GetView<HomepageAController> {
                     children: [
                       CircleAvatar(
                         radius: 30.0,
-                        backgroundImage: NetworkImage(
+                        backgroundImage: AssetImage(
                             'assets/bg.png'), // Ganti dengan link atau asset gambar user
                       ),
                       SizedBox(width: 10.0),
@@ -87,7 +87,7 @@ class HomepageAView extends GetView<HomepageAController> {
                     buildMenuItem(
                         context, 'Absen', Icons.checklist, AbsenAdminPage()),
                     buildMenuItem(
-                        context, 'Schedule', Icons.schedule, ScheduleView()),
+                        context, 'Schedule', Icons.schedule, AddEventPage()),
                     buildMenuItem(context, 'Quiz', Icons.lightbulb, QuizView()),
                     buildMenuItem(context, 'Struktur', Icons.account_tree,
                         StrukturScreen()),

@@ -84,9 +84,9 @@ class BacaModulScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Bottom Quiz Button
+
             Positioned(
-              left: 16, // Adjusted left padding for proper alignment
+              left: 16,
               top: 700,
               child: SizedBox(
                 width: 383,
@@ -100,7 +100,7 @@ class BacaModulScreen extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'Mulai Quiz',
+                      'Download Modul',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 24,
